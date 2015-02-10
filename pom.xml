@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.breakingrobots</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>AssertLogger</name>
+  <artifactId>AssertLogger</artifactId>
+  
+    <dependencies>
+      	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<type>jar</type>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+  </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>2.4</version>
+            </extension>
+        </extensions>        
+    </build>
+  
+    <description>This package contains an SLF4J Logger Appender that asserts when any class logs above the intended log level. It also contains a version that performs regex matching on the logged messages, either asserting if the message matches (or doesn't match) a group of regular expressions.</description>
+
+    <!-- configuration for maven deploy -->
+    <distributionManagement>
+        <repository>
+            <id>ssh-repository</id>
+            <name>OCI Maven Repository</name>
+            <url>scpexe://extranet.ociweb.com/pronghorn/repo</url>
+        </repository>
+        <snapshotRepository>
+            <id>ssh-repository</id>
+            <name>OCI Maven Snapshot Repository</name>
+            <url>scpexe://extranet.ociweb.com/pronghorn/repo</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- configuration for maven pull -->
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>false</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <id>ssh-repository</id>
+            <url>scpexe://extranet.ociweb.com/pronghorn/repo</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>    
+</project>
