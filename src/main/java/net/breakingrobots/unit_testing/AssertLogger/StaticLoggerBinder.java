@@ -1,21 +1,21 @@
-package net.breakingrobots.unit_testing.AssertLogger;
+package org.slf4j.impl;
 
 import org.slf4j.ILoggerFactory;
 import org.slf4j.spi.LoggerFactoryBinder;
 
-public class AssertingLoggerBinder implements LoggerFactoryBinder {
+public class StaticLoggerBinder implements LoggerFactoryBinder {
 
-    private static final AssertingLoggerBinder SINGLETON = new AssertingLoggerBinder();
-    private static final String loggerFactoryClassString = AssertingLoggerBinder.class.getName();
+    private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
+    private static final String loggerFactoryClassString = StaticLoggerBinder.class.getName();
     private final ILoggerFactory loggerFactory;
 
     public static String REQUESTED_API_VERSION = "1.7";
 
-    public static final AssertingLoggerBinder getSingleton() {
+    public static final StaticLoggerBinder getSingleton() {
         return SINGLETON;
     }
 
-    private AssertingLoggerBinder() {
+    private StaticLoggerBinder() {
         loggerFactory = new AssertingLoggerFactory();
     }
 
