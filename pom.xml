@@ -5,6 +5,8 @@
   <name>AssertLogger</name>
   <artifactId>AssertLogger</artifactId>
   
+    <description>This package contains an SLF4J Logger implementation that asserts when any class logs above the intended log level.</description>
+
     <dependencies>
       	<dependency>
 			<groupId>junit</groupId>
@@ -41,7 +43,6 @@
         </extensions>        
     </build>
   
-    <description>This package contains an SLF4J Logger Appender that asserts when any class logs above the intended log level. It also contains a version that performs regex matching on the logged messages, either asserting if the message matches (or doesn't match) a group of regular expressions.</description>
 
     <!-- configuration for maven deploy -->
     <distributionManagement>
