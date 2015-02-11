@@ -1,7 +1,7 @@
 package net.breakingrobots.unit_testing;
 
-import net.breakingrobots.unit_testing.AssertLogger.AssertingLogger;
-import net.breakingrobots.unit_testing.AssertLogger.Level;
+import org.slf4j.impl.AssertingLogger;
+import org.slf4j.impl.Level;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

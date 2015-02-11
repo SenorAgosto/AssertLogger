@@ -1,8 +1,8 @@
 package net.breakingrobots.unit_testing;
 
-import net.breakingrobots.unit_testing.AssertLogger.AssertingLoggerFactory;
-import net.breakingrobots.unit_testing.AssertLogger.AssertingLogger;
-import net.breakingrobots.unit_testing.AssertLogger.NullLogger;
+import org.slf4j.impl.AssertingLoggerFactory;
+import org.slf4j.impl.AssertingLogger;
+import org.slf4j.impl.NullLogger;
 
 import org.slf4j.Logger;
 

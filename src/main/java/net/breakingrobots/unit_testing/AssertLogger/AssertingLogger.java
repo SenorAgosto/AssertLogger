@@ -1,4 +1,4 @@
-package net.breakingrobots.unit_testing.AssertLogger;
+package org.slf4j.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.Marker;

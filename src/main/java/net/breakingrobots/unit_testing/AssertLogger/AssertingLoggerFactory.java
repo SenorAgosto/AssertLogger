@@ -1,4 +1,4 @@
-package net.breakingrobots.unit_testing.AssertLogger;
+package org.slf4j.impl;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
