@@ -1,5 +1,6 @@
 package org.slf4j.impl;
 
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -8,7 +9,7 @@ import org.slf4j.Logger;
 
 public class AssertingLoggerFactory implements ILoggerFactory {
 
-    String regex = "";
+    AtomicReference<String> concurrentRegex = new AtomicReference<String>("");
 
     public AssertingLoggerFactory() {
     }
@@ -26,11 +27,18 @@ public class AssertingLoggerFactory implements ILoggerFactory {
 
     // Adds regex pattern to list of patterns
     public void ignore(String classOrNamespaceRegEx) {
-        regex = regex + "|(" + classOrNamespaceRegEx + ")";
+        boolean success = false;
+
+        while(!success) {
+            String regex = concurrentRegex.get();
+            String newRegex = regex + "|(" + classOrNamespaceRegEx + ")";
+
+            success = concurrentRegex.compareAndSet(regex, newRegex);
+        }
     }
     
     // Match the class name against ignore list
     public boolean shouldIgnore(String name) {
-        return Pattern.matches(regex, name);
+        return Pattern.matches(concurrentRegex.get(), name);
     }
 }
