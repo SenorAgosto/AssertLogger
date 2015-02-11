@@ -10,10 +10,22 @@ To change the log level which triggers failures, e.g. a debug message is okay, b
 
     @Before
     public void init() {
-        AsertingLoggerFactory factory = (AssertingLoggerFactory) StaticLoggerBinder.getSingleton().getLoggerFactory();
+        AssertingLoggerFactory factory = (AssertingLoggerFactory) StaticLoggerBinder.getSingleton().getLoggerFactory();
 
-        // any message at ERROR or above (FATAL) will cause an assert.
+        // any message at ERROR or above 
+        // will cause an assert.
         factory.setLogLevel(Level.ERROR);
+    }
+
+You can also change the setting directly on the logger. 
+
+    @Before
+    public void init() {
+        AssertingLogger logger = (AssertingLogger) LoggerFactory.getLogger(Class.class);
+
+        // only assert if the log is a warning or error,
+        // debug messages are ignored.
+        logger.setLogLevel(Level.WARN);
     }
 
 ## Adding Ignored Classes and Namespaces
@@ -36,5 +48,10 @@ To prevent logging from a particular class or namespace from triggering an unit 
 
 Any logging from junit classes, or myclass, or MyClass would be ignored. Logging from any other class would trigger an Assert.fail(). 
 
+## Dependencies 
 
+These are the versions I've built against. 
 
+- SLF4J 1.7.7
+- Junit 4.8.1
+    
