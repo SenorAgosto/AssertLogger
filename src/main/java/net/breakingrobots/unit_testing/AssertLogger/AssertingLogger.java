@@ -139,43 +139,43 @@ public class AssertingLogger implements Logger {
     }
 
     public boolean isDebugEnabled() {
-        return this.logLevel == Level.DEBUG;
+        return this.logLevel <= Level.DEBUG;
     }
 
     public boolean isDebugEnabled(Marker marker) {
-        return this.logLevel == Level.DEBUG;
+        return this.logLevel <= Level.DEBUG;
     }
 
     public boolean isErrorEnabled() {
-        return this.logLevel == Level.ERROR;
+        return this.logLevel <= Level.ERROR;
     }
 
     public boolean isErrorEnabled(Marker marker) {
-        return this.logLevel == Level.ERROR;
+        return this.logLevel <= Level.ERROR;
     }
 
     public boolean isInfoEnabled() {
-        return this.logLevel == Level.INFO;
+        return this.logLevel <= Level.INFO;
     }
 
     public boolean isInfoEnabled(Marker marker) {
-        return this.logLevel == Level.INFO;
+        return this.logLevel <= Level.INFO;
     }
 
     public boolean isTraceEnabled() {
-        return this.logLevel == Level.TRACE;
+        return this.logLevel <= Level.TRACE;
     }
 
     public boolean isTraceEnabled(Marker marker) {
-        return this.logLevel == Level.TRACE;
+        return this.logLevel <= Level.TRACE;
     }
 
     public boolean isWarnEnabled() {
-        return this.logLevel == Level.WARN;
+        return this.logLevel <= Level.WARN;
     }
 
     public boolean isWarnEnabled(Marker marker) {
-        return this.logLevel == Level.WARN;   
+        return this.logLevel <= Level.WARN;   
     }
 
     public void trace(Marker marker, String msg) {
