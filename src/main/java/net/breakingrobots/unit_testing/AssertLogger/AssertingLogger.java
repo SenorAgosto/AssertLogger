@@ -9,6 +9,13 @@ public class AssertingLogger implements Logger {
 
     private int logLevel = Level.WARN;
 
+    public AssertingLogger() {
+    }
+
+    public AssertingLogger(int logLevel) {
+        this.logLevel = logLevel;
+    }
+
     // set the log level...
     public void setLogLevel(int level) {
         this.logLevel = level;

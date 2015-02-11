@@ -5,8 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import org.slf4j.impl.AssertingLogger;
 import org.slf4j.impl.AssertingLoggerFactory;
-import org.slf4j.impl.StaticLoggerBinder;
+import org.slf4j.impl.Level;
 import org.slf4j.impl.NullLogger;
+import org.slf4j.impl.StaticLoggerBinder;
 
 import org.junit.Test;
 import org.junit.Assert;
@@ -21,6 +22,8 @@ public class UseAssertingLoggerTest {
         AssertingLoggerFactory factory = (AssertingLoggerFactory) StaticLoggerBinder.getSingleton().getLoggerFactory();
         factory.ignore("org.junit.*");  // ignore all org.junit classes.
         factory.ignore("myclass");
+
+        factory.setLogLevel(Level.ERROR);
     }
 
     @Test
@@ -32,5 +35,30 @@ public class UseAssertingLoggerTest {
     public void verifyLoggerFactoryGivesMeNullImplementationIfMyClassIsIgnored() {
         final Logger logger = LoggerFactory.getLogger(org.junit.Test.class);
         Assert.assertTrue(logger instanceof NullLogger);
+    }
+
+    @Test 
+    public void verifyLoggerFactorySetsLogLevelCorrectly() {
+        boolean failed = false;
+
+        final Logger logger = LoggerFactory.getLogger("testing");
+
+        try {
+            logger.debug("This will not assert.");
+        }
+        catch(AssertionError assertionError) {
+            failed = true;
+        }
+
+        Assert.assertFalse(failed);
+
+        try {
+            logger.error("This will assert.");
+        }
+        catch(AssertionError assertionError) {
+            failed = true;
+        }
+
+        Assert.assertTrue(failed);
     }
 }

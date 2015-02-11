@@ -1,5 +1,6 @@
 package org.slf4j.impl;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 public class AssertingLoggerFactory implements ILoggerFactory {
 
     AtomicReference<String> concurrentRegex = new AtomicReference<String>("");
+    AtomicInteger logLevel = new AtomicInteger(Level.WARN);
 
     public AssertingLoggerFactory() {
     }
@@ -19,10 +21,15 @@ public class AssertingLoggerFactory implements ILoggerFactory {
 
         // if the name is in the ignore filter, return a null implementation.
         if(!shouldIgnore(name)) {
-            return new AssertingLogger();    
+            return new AssertingLogger(logLevel.get());
         }
         
         return new NullLogger();
+    }
+
+    // Set the log level which triggers asserts.
+    public void setLogLevel(int level) {
+        this.logLevel.set(level);
     }
 
     // Adds regex pattern to list of patterns
