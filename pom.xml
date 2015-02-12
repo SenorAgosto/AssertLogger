@@ -1,16 +1,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>net.breakingrobots</groupId>
-  <version>0.2.0-SNAPSHOT</version>
-  <name>AssertLogger</name>
-  <artifactId>AssertLogger</artifactId>
-  
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.AssertLogger</groupId>
+    <artifactId>AssertLogger</artifactId>
+    <version>0.3.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>AssertLogger</name>
+    <description>This package contains an SLF4J Logger implementation that asserts when any class logs above the intended log level.</description>
+    <url>https://github.com/paxos1977/AssertLogger</url>
+
+    <licenses>
+        <license>
+            <name>4-clause BSD License</name>
+            <url>https://github.com/paxos1977/AssertLogger/blob/develop/LICENSE.md</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/paxos1977/AssertLogger.git</url>
+    </scm>
+
     <dependencies>
       	<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
 			<type>jar</type>
+            <scope>test</scope>
 			<optional>false</optional>
 		</dependency>
 		<dependency>
@@ -18,7 +35,8 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.7</version>
 		</dependency>
-  </dependencies>
+    </dependencies>
+    
     <build>
         <plugins>
             <plugin>
@@ -41,7 +59,6 @@
         </extensions>        
     </build>
   
-    <description>This package contains an SLF4J Logger Appender that asserts when any class logs above the intended log level. It also contains a version that performs regex matching on the logged messages, either asserting if the message matches (or doesn't match) a group of regular expressions.</description>
 
     <!-- configuration for maven deploy -->
     <distributionManagement>

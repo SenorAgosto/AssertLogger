@@ -1,6 +1,6 @@
 # AssertLogger 
 
-AssertLogger is a SLF4J logging implementation that makes a Junit Assert.fail() when any logging is done through the SLF4J API. 
+AssertLogger is a SLF4J logging implementation that throws AssertionError when any logging is done through the SLF4J API. 
 
 The log level which triggers failures is configurable. We can also ignore some class's logging based on namespace or class name. 
 
@@ -53,5 +53,4 @@ Any logging from junit classes, or myclass, or MyClass would be ignored. Logging
 These are the versions I've built against. 
 
 - SLF4J 1.7.7
-- Junit 4.8.1
     

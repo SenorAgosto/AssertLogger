@@ -28,12 +28,13 @@ public class AssertingLoggerFactory implements ILoggerFactory {
     }
 
     // Set the log level which triggers asserts.
-    public void setLogLevel(int level) {
+    public AssertingLoggerFactory setLogLevel(int level) {
         this.logLevel.set(level);
+        return this;
     }
 
     // Adds regex pattern to list of patterns
-    public void ignore(String classOrNamespaceRegEx) {
+    public AssertingLoggerFactory ignore(String classOrNamespaceRegEx) {
         boolean success = false;
 
         while(!success) {
@@ -42,10 +43,12 @@ public class AssertingLoggerFactory implements ILoggerFactory {
 
             success = concurrentRegex.compareAndSet(regex, newRegex);
         }
+
+        return this;
     }
     
     // Match the class name against ignore list
-    public boolean shouldIgnore(String name) {
+    private boolean shouldIgnore(String name) {
         return Pattern.matches(concurrentRegex.get(), name);
     }
 }
