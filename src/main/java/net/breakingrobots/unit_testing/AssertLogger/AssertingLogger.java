@@ -3,7 +3,7 @@ package org.slf4j.impl;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 
-import org.junit.Assert;
+import java.lang.AssertionError;
 
 public class AssertingLogger implements Logger { 
 
@@ -268,7 +268,7 @@ public class AssertingLogger implements Logger {
     // print the stack if the logging event is high enough.
     private static void fail(AssertingLogger logger, int level) {
         if(logger.logLevel <= level) {
-            Assert.fail();
+            throw new AssertionError();
         }
     }
 }

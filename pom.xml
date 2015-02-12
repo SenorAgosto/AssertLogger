@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.AssertLogger</groupId>
     <artifactId>AssertLogger</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>AssertLogger</name>
@@ -27,6 +27,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
 			<type>jar</type>
+            <scope>test</scope>
 			<optional>false</optional>
 		</dependency>
 		<dependency>
