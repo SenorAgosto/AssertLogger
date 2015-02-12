@@ -1,8 +1,8 @@
 # AssertLogger 
 
-AssertLogger is a SLF4J logging implementation that throws AssertionError when any logging is done through the SLF4J API. 
+AssertLogger is a SLF4J logging implementation intended to be used in unit tests. The implementation throws an AssertionError when any logging is done through the SLF4J API by production code. 
 
-The log level which triggers failures is configurable. We can also ignore some class's logging based on namespace or class name. 
+The log level which triggers failures is configurable. We can also ignore (not assert) for classes or namespaces matching regular expressions. 
 
 ## Changing the Log Level 
 
